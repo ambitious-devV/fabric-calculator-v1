@@ -1,0 +1,153 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.contact-page {
+  width: 390px;
+  min-height: 100vh;
+  margin: auto;
+  background: #edf2f8;
+}
+
+/* ================= HERO ================= */
+
+.contact-hero {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background: white;
+  border-bottom-left-radius: 50% 45px;
+  border-bottom-right-radius: 50% 45px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.contact-hero .back-btn {
+  position: absolute;
+  top: 24px;
+  left: 22px;
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background: #173a68;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.contact-hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 8px;
+}
+
+.contact-icon {
+  font-size: 40px;
+}
+
+.contact-title {
+  color: #173a68;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.slider-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.line {
+  width: 40px;
+  height: 2px;
+  background: #d8b37d;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d8b37d;
+}
+
+.active {
+  width: 12px;
+  height: 12px;
+}
+
+.contact-subtitle {
+  font-size: 14px;
+  color: #6b6b6b;
+}
+
+/* ================= CONTACT CARD ================= */
+
+.contact-card {
+  margin: 24px 20px;
+  background: white;
+  border-radius: 24px;
+  padding: 28px 20px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.contact-icon-circle {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: #f5f2ee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.contact-card h3 {
+  color: #173a68;
+  font-size: 17px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.contact-desc {
+  font-size: 12px;
+  color: #8a8a8a;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.phone-box {
+  background: #f5f6f8;
+  border: 1px solid #e2e6ec;
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 18px;
+  font-weight: 800;
+  color: #173a68;
+  letter-spacing: 1px;
+  margin-bottom: 18px;
+}
+
+.call-btn {
+  display: block;
+  background: #173a68;
+  color: white;
+  text-decoration: none;
+  border-radius: 16px;
+  padding: 14px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  box-shadow: 0 10px 24px rgba(23, 58, 104, 0.25);
+}

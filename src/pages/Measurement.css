@@ -1,0 +1,412 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.measurement-page {
+  width: 390px;
+  margin: auto;
+  background: #edf2f8;
+  min-height: 100vh;
+  padding-bottom: 30px;
+}
+
+/* ================= HERO ================= */
+
+.measurement-hero {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  background: white;
+  border-bottom-left-radius: 50% 45px;
+  border-bottom-right-radius: 50% 45px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.back-btn,
+.help-btn {
+  position: absolute;
+  top: 24px;
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.back-btn {
+  left: 22px;
+  background: #173a68;
+  color: white;
+}
+
+.help-btn {
+  right: 22px;
+  background: white;
+  color: #173a68;
+}
+
+.measurement-hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 26px;
+  gap: 6px;
+}
+
+.measurement-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #f5f2ee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.measurement-title {
+  margin-top: 8px;
+  color: #173a68;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.slider-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.line {
+  width: 40px;
+  height: 2px;
+  background: #d8b37d;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d8b37d;
+}
+
+.active {
+  width: 12px;
+  height: 12px;
+}
+
+.measurement-subtitle {
+  font-size: 14px;
+  color: #6b6b6b;
+}
+
+/* ================= UNIT TOGGLE ================= */
+
+.unit-toggle {
+  margin: 18px 20px 0;
+  background: white;
+  border-radius: 30px;
+  padding: 5px;
+  display: flex;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.unit-btn {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 12px 0;
+  border-radius: 24px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #173a68;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.unit-btn.active {
+  background: #173a68;
+  color: white;
+}
+
+/* ================= INPUT CARDS ================= */
+
+.input-list {
+  padding: 16px 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.input-card {
+  background: white;
+  border-radius: 22px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.input-icon {
+  width: 46px;
+  height: 46px;
+  min-width: 46px;
+  border-radius: 14px;
+  background: #f5ece1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-text {
+  flex: 1;
+}
+
+.input-text h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #173a68;
+}
+
+.input-text p {
+  font-size: 11px;
+  color: #8a8a8a;
+  margin-top: 2px;
+}
+
+.input-box {
+  display: flex;
+  align-items: center;
+  background: #f5f6f8;
+  border: 1px solid #e2e6ec;
+  border-radius: 12px;
+  padding: 8px 10px;
+  gap: 6px;
+  min-width: 92px;
+}
+
+.input-box.disabled {
+  background: #eceff2;
+  opacity: 0.75;
+}
+
+.input-box input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  color: #173a68;
+  outline: none;
+  text-align: right;
+}
+
+.unit-suffix {
+  font-size: 12px;
+  color: #9a9a9a;
+}
+
+/* ================= CALCULATE BUTTON ================= */
+
+.calculate-btn {
+  margin: 20px 20px 0;
+  width: calc(100% - 40px);
+  background: #173a68;
+  color: white;
+  border: none;
+  border-radius: 18px;
+  padding: 16px;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 10px 24px rgba(23, 58, 104, 0.25);
+  transition: transform 0.15s ease;
+}
+
+.calculate-btn:active {
+  transform: scale(0.97);
+}
+
+.calc-icon {
+  font-size: 16px;
+}
+
+/* ================= RESULT ================= */
+
+.result-card {
+  margin: 16px 20px 0;
+  background: white;
+  border-radius: 22px;
+  padding: 18px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.result-card h3 {
+  color: #173a68;
+  font-size: 15px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #444;
+  padding: 6px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.result-row.highlight {
+  font-weight: 800;
+  color: #173a68;
+  border-bottom: none;
+  padding-top: 10px;
+  font-size: 14px;
+}
+
+.toggle-calc-btn {
+  margin-top: 14px;
+  width: 100%;
+  background: #f5f2ee;
+  border: none;
+  border-radius: 12px;
+  padding: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #173a68;
+  cursor: pointer;
+}
+
+.calculation-steps {
+  margin-top: 12px;
+  background: #eef6ff;
+  border-left: 4px solid #173a68;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.calculation-steps p {
+  font-size: 12px;
+  color: #333;
+  line-height: 1.6;
+  margin: 8px 0;
+}
+
+.calculation-steps hr {
+  border: none;
+  border-top: 1px solid #d8e3f0;
+  margin: 8px 0;
+}
+/* ================= CHOOSE PANEL ================= */
+
+.choose-panel {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.choose-panel h4 {
+  font-size: 13px;
+  font-weight: 800;
+  color: #173a68;
+  margin-bottom: 10px;
+}
+
+.panel-options {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.panel-option {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+  border: 2px solid #e2e6ec;
+  border-radius: 14px;
+  background: #f8f9fb;
+  font-size: 16px;
+  font-weight: 800;
+  color: #173a68;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.panel-option.selected {
+  border-color: #173a68;
+  background: #eef3fa;
+}
+
+.panel-radio {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid #173a68;
+  display: inline-block;
+}
+
+.panel-option.selected .panel-radio {
+  background: #173a68;
+}
+
+.panel-info p {
+  font-size: 12px;
+  color: #444;
+  margin-top: 10px;
+  line-height: 1.4;
+}
+
+.panel-image-placeholder {
+  margin-top: 6px;
+  height: 90px;
+  background: #f5f2ee;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: #b3aca3;
+  font-weight: 600;
+}
+
+/* ================= BELT NOTE ================= */
+
+.belt-note {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #8a8a8a;
+  margin-top: 2px;
+  font-style: italic;
+}
+
+.select-prompt {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #9a9a9a;
+  text-align: center;
+  font-style: italic;
+}
+.panel-look-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
