@@ -5,10 +5,31 @@ import panelLookLess from "../assets/images/panel-look-less.png";
 import panelLookMore from "../assets/images/panel-look-more.png";
 import ripplePanelLookLess from "../assets/images/ripple-panel-look-less.png";
 import ripplePanelLookMore from "../assets/images/ripple-panel-look-more.png";
+import elizaPanelLookLess from "../assets/images/eliza-panel-look-less.png";
+import elizaPanelLookMore from "../assets/images/eliza-panel-look-more.png";
 
 const TYPE_INFO = {
   american: { title: "AMERICAN PLEAT", icon: "chair" },
   ripple: { title: "RIPPLE FOLD", icon: "ripple" },
+  eliza: { title: "ELIZA PLEAT", icon: "chair" },
+  "eyelet-locking": { title: "EYELET (LOCKING)", icon: "ripple" },
+  "eyelet-without-locking": { title: "EYELET (WITHOUT LOCKING)", icon: "ripple" },
+};
+
+const PANEL_IMAGES = {
+  ripple: { less: ripplePanelLookLess, more: ripplePanelLookMore },
+  american: { less: panelLookLess, more: panelLookMore },
+  eliza: { less: elizaPanelLookLess, more: elizaPanelLookMore },
+  "eyelet-locking": { less: panelLookLess, more: panelLookMore },
+  "eyelet-without-locking": { less: panelLookLess, more: panelLookMore },
+};
+
+const PANEL_DIVISOR = {
+  american: 20,
+  ripple: 20,
+  eliza: 20,
+  "eyelet-locking": 20,
+  "eyelet-without-locking": 28,
 };
 
 const BELT_ALLOWANCE = 0.25;
@@ -17,9 +38,10 @@ function Measurement() {
   const navigate = useNavigate();
   const { type } = useParams();
   const info = TYPE_INFO[type] || TYPE_INFO.american;
-
-  const lessImg = type === "ripple" ? ripplePanelLookLess : panelLookLess;
-  const moreImg = type === "ripple" ? ripplePanelLookMore : panelLookMore;
+  const images = PANEL_IMAGES[type] || PANEL_IMAGES.american;
+  const lessImg = images.less;
+  const moreImg = images.more;
+  const divisor = PANEL_DIVISOR[type] || 20;
 
   const [width, setWidth] = useState("");
   const [height, setHeight] = useState("");
@@ -36,10 +58,10 @@ function Measurement() {
       return;
     }
 
-    const rawPanels = widthInches / 20;
+    const rawPanels = widthInches / divisor;
     const lowerPanels = Math.max(1, Math.floor(rawPanels));
-    const remainder = widthInches % 20;
-    const fraction = remainder / 20;
+    const remainder = widthInches % divisor;
+    const fraction = remainder / divisor;
 
     const isChooseCase = fraction > 0.1 && fraction <= 0.6;
 
@@ -240,21 +262,28 @@ function Measurement() {
                 </button>
               </div>
 
-              <div className="panel-info">
-                <p>
-                  <b>{result.lowerPanels}</b> — Economical, less gathering, average look
-                </p>
-                <div className="panel-image-placeholder">
-                  <img src={lessImg} alt={`${result.lowerPanels} Panel Look`} className="panel-look-img" />
+              {/* Only ONE image/description shows — matching whichever panel is selected */}
+              {panelChoice === result.lowerPanels && (
+                <div className="panel-info">
+                  <p>
+                    <b>{result.lowerPanels}</b> — Economical, less gathering, average look
+                  </p>
+                  <div className="panel-image-placeholder">
+                    <img src={lessImg} alt={`${result.lowerPanels} Panel Look`} className="panel-look-img" />
+                  </div>
                 </div>
+              )}
 
-                <p>
-                  <b>{result.recommendedPanels}</b> — Clean, premium look with good gathering
-                </p>
-                <div className="panel-image-placeholder">
-                  <img src={moreImg} alt={`${result.recommendedPanels} Panel Look`} className="panel-look-img" />
+              {panelChoice === result.recommendedPanels && (
+                <div className="panel-info">
+                  <p>
+                    <b>{result.recommendedPanels}</b> — Clean, premium look with good gathering
+                  </p>
+                  <div className="panel-image-placeholder">
+                    <img src={moreImg} alt={`${result.recommendedPanels} Panel Look`} className="panel-look-img" />
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           )}
 
@@ -312,7 +341,7 @@ function Measurement() {
                 <br />
                 Raw Panels
                 <br />
-                {result.widthInches} ÷ 20 = {result.rawPanels}
+                {result.widthInches} ÷ {divisor} = {result.rawPanels}
               </p>
 
               <hr />
